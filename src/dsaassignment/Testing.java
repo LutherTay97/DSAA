@@ -10,5 +10,5 @@ package dsaassignment;
  * @author user
  */
 public class Testing {
-    
+    int a = 0;
 }

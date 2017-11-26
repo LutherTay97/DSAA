@@ -16,7 +16,7 @@ public class DeliveryMan implements Serializable{
     String name;
     String phoneNumber;
     String email;
-    String status;
+    String deliveryStatus;
     
     private static int id = 1000;
 
@@ -65,10 +65,10 @@ public class DeliveryMan implements Serializable{
     }
 
     public String getStatus() {
-        return status;
+        return deliveryStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 }

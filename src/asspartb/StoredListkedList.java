@@ -11,7 +11,13 @@ package asspartb;
  */
 
 
-public class StoredListkedList<T extends Comparable<? super T>> implements StoredListInterface<T>{
+import java.io.Serializable;
+
+/**
+ *
+ * @author Win-8
+ */
+public class StoredListkedList<T extends Comparable<? super T>> implements StoredListInterface<T>, Serializable{
     private Node firstNode;
     private int length;
     
@@ -57,7 +63,7 @@ public class StoredListkedList<T extends Comparable<? super T>> implements Store
     }
     
     
-    private class Node {
+    private class Node implements Serializable{
 
     private T data;
     private Node next;
@@ -100,17 +106,23 @@ public class StoredListkedList<T extends Comparable<? super T>> implements Store
     return result;
   }
     
-   @Override
-   public T getEntryForUpdate(int givenPosition) {
-    T result = null;
+      public boolean replace(int givenPosition, T newEntry) {
+    boolean isSuccessful = true;
 
     if ((givenPosition >= 1) && (givenPosition <= length)) {
       Node currentNode = firstNode;
-      
-      result = currentNode.data;	// currentNode is pointing to the node at givenPosition
+      for (int i = 0; i < givenPosition - 1; ++i) {
+        // System.out.println("Trace| currentNode.data = " + currentNode.data + "\t, i = " + i);
+        currentNode = currentNode.next;		// advance currentNode to next node
+      }
+      currentNode.data = newEntry;	// currentNode is pointing to the node at givenPosition
+    } else {
+      isSuccessful = false;
     }
-      return result;
+
+    return isSuccessful;
   }
+    
     
  public boolean contains(T anEntry) {    
     

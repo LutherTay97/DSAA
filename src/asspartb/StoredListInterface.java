@@ -14,5 +14,7 @@ public interface StoredListInterface<T extends Comparable<? super T>> {
     public int getLength();
     public T getEntry(int givenPosition);
     public boolean contains(T anEntry);
-    public T getEntryForUpdate(int givenPosition);
+    //public T getEntryForUpdate(int givenPosition);
+    public boolean replace(int givenPosition, T newEntry);
+     public boolean isEmpty() ;
 }

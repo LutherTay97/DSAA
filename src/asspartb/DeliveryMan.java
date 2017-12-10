@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package asspartb;
-
+import java.io.Serializable;
 /**
  *
  * @author A555LD
  */
-public class DeliveryMan implements DeliveryManInterface{
+public class DeliveryMan implements Serializable,DeliveryManInterface{
     private String deliveryManId;
     private String deliveryManName;
     private String deliveryManIC;
@@ -24,14 +24,14 @@ public class DeliveryMan implements DeliveryManInterface{
     
     
     
-    private static int autoNumber = 0;
+    //private static int autoNumber = 1000;
     
     public DeliveryMan() {
         
     }
     
-    public DeliveryMan(String deliveryManName, String deliveryManIC,String deliveryManPassword,String deliveryManAddress, String deliveryManPhoneNo,String deliveryManEmergencyContact,String deliveryManWorkArea, String deliveryManPersonalStatus){
-        this.deliveryManId = "DM" + autoNumber++;
+    public DeliveryMan(int autoNumber, String deliveryManName, String deliveryManIC,String deliveryManPassword,String deliveryManAddress, String deliveryManPhoneNo,String deliveryManEmergencyContact,String deliveryManWorkArea,String deliveryManStatus, String deliveryManPersonalStatus){
+        this.deliveryManId = "D" + autoNumber;
         this.deliveryManName = deliveryManName;
         this.deliveryManIC = deliveryManIC;
         this.deliveryManPassword = deliveryManPassword;
@@ -39,7 +39,7 @@ public class DeliveryMan implements DeliveryManInterface{
         this.deliveryManPhoneNo = deliveryManPhoneNo;
         this.deliveryManEmergencyContact = deliveryManEmergencyContact;
         this.deliveryManWorkArea = deliveryManWorkArea;
-        this.deliveryManStatus = null;
+        this.deliveryManStatus = deliveryManStatus;
         this.deliveryManPersonalStatus = deliveryManPersonalStatus;
         
     }
@@ -118,14 +118,6 @@ public class DeliveryMan implements DeliveryManInterface{
 
     public String getDeliveryManPhoneNo() {
         return deliveryManPhoneNo;
-    }
-
-    public static int getAutoNumber() {
-        return autoNumber;
-    }
-
-    public static void setAutoNumber(int autoNumber) {
-        DeliveryMan.autoNumber = autoNumber;
     }
 
     public void setDeliveryManPhoneNo(String deliveryManPhoneNo) {
@@ -229,5 +221,8 @@ public class DeliveryMan implements DeliveryManInterface{
     public int compareTo(DeliveryManInterface other) {
         return this.getDeliveryManName().compareTo(other.getDeliveryManName());
     }
+    
+    
+    
     
 }
